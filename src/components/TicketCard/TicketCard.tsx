@@ -1,5 +1,9 @@
 import "./TicketCard.css";
 import TurkishAirlines from "../../assets/turkish-airlines.png";
+import S7 from "../../assets/s7.png";
+import Aeroflot from "../../assets/aeroflot.png";
+import BritishAirways from "../../assets/british-airways.png";
+
 import TravelTime from "../../assets/travel-time.png";
 import { formatDate } from "../../utils/formatDate";
 import { getTransfersDeclension } from "../../utils/getTransfersDeclension";
@@ -37,7 +41,20 @@ const TicketCard = ({
   return (
     <section className="ticket-card">
       <div className="ticket-card-header">
-        <img src={TurkishAirlines} alt="turkish airlines" width={100} height={30} />
+        {/* {carrier === "S7" ? (
+          <img src={S7} alt="s7" width={100} height={30} />
+        ) : (
+          <img src={TurkishAirlines} alt="turkish airlines" width={100} height={30} />
+        )} */}
+
+        {carrier === "S7" && <img src={S7} alt="s7" width={100} height={30} />}
+        {carrier === "TK" && (
+          <img src={TurkishAirlines} alt="turkish airlines" width={100} height={30} />
+        )}
+        {carrier === "SU" && <img src={Aeroflot} alt="aeroflot" width={100} height={30} />}
+        {carrier === "BA" && (
+          <img src={BritishAirways} alt="british airways" width={100} height={30} />
+        )}
         <button className="ticket-card-buy-button">
           Купить <br />
           за {price} ₽
