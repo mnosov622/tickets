@@ -1,6 +1,7 @@
 .filters {
   width: 220px;
-  height: 150px;
+  height: auto;
+  min-height: 150px;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -10,7 +11,7 @@
 
 .currency h3 {
   margin: 0.5em 0;
-  color: gray;
+  color: rgb(66, 66, 66);
   font-weight: 500;
   font-size: 1em;
 }
@@ -39,4 +40,45 @@
 
 .currency-button:hover {
   background-color: lightblue;
+}
+
+.stops-button {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+.stops-checkbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid gray;
+  border-radius: 4px;
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stops-button.checked {
+  background-color: white;
+}
+
+.stops-checkbox.checked {
+  border-color: rgb(27, 150, 237);
+  background-color: white;
+}
+
+.stops-checkbox.checked .stops-checkbox-icon {
+  color: rgb(27, 150, 237);
+}
+
+.stops-button:hover {
+  border-color: lightblue;
+}
+
+.stops-checkbox-icon {
+  color: white;
+  font-size: 14px;
 }
