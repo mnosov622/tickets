@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import "./Filters.css";
 
-const Filters = () => {
+interface FiltersProps {
+  handleStopsChange: (stop: string) => void;
+}
+
+const Filters = ({ handleStopsChange }: FiltersProps) => {
   const [selectedCurrency, setSelectedCurrency] = useState<string>("RUB");
   const [selectedStops, setSelectedStops] = useState<string[]>([]);
 
@@ -15,6 +19,7 @@ const Filters = () => {
     } else {
       setSelectedStops([...selectedStops, stop]);
     }
+    handleStopsChange(stop);
   };
 
   const isStopSelected = (stop: string) => selectedStops.includes(stop);
@@ -49,47 +54,47 @@ const Filters = () => {
         <h3>Количество пересадок</h3>
         <div className="stops-buttons">
           <button
-            className={`stops-button ${isStopSelected("Все") ? "checked" : ""}`}
-            onClick={() => handleStopsClick("Все")}
+            className={`stops-button ${isStopSelected("All") ? "checked" : ""}`}
+            onClick={() => handleStopsClick("All")}
           >
-            <div className={`stops-checkbox ${isStopSelected("Все") ? "checked" : ""}`}>
-              {isStopSelected("Все") && <span className="stops-checkbox-icon">✓</span>}
+            <div className={`stops-checkbox ${isStopSelected("All") ? "checked" : ""}`}>
+              {isStopSelected("All") && <span className="stops-checkbox-icon">✓</span>}
             </div>
             Все
           </button>
           <button
-            className={`stops-button ${isStopSelected("Без пересадок") ? "checked" : ""}`}
-            onClick={() => handleStopsClick("Без пересадок")}
+            className={`stops-button ${isStopSelected("0") ? "checked" : ""}`}
+            onClick={() => handleStopsClick("0")}
           >
-            <div className={`stops-checkbox ${isStopSelected("Без пересадок") ? "checked" : ""}`}>
-              {isStopSelected("Без пересадок") && <span className="stops-checkbox-icon">✓</span>}
+            <div className={`stops-checkbox ${isStopSelected("0") ? "checked" : ""}`}>
+              {isStopSelected("0") && <span className="stops-checkbox-icon">✓</span>}
             </div>
             Без пересадок
           </button>
           <button
-            className={`stops-button ${isStopSelected("1 пересадка") ? "checked" : ""}`}
-            onClick={() => handleStopsClick("1 пересадка")}
+            className={`stops-button ${isStopSelected("1") ? "checked" : ""}`}
+            onClick={() => handleStopsClick("1")}
           >
-            <div className={`stops-checkbox ${isStopSelected("1 пересадка") ? "checked" : ""}`}>
-              {isStopSelected("1 пересадка") && <span className="stops-checkbox-icon">✓</span>}
+            <div className={`stops-checkbox ${isStopSelected("1") ? "checked" : ""}`}>
+              {isStopSelected("1") && <span className="stops-checkbox-icon">✓</span>}
             </div>
             1 пересадка
           </button>
           <button
-            className={`stops-button ${isStopSelected("2 пересадки") ? "checked" : ""}`}
-            onClick={() => handleStopsClick("2 пересадки")}
+            className={`stops-button ${isStopSelected("2") ? "checked" : ""}`}
+            onClick={() => handleStopsClick("2")}
           >
-            <div className={`stops-checkbox ${isStopSelected("2 пересадки") ? "checked" : ""}`}>
-              {isStopSelected("2 пересадки") && <span className="stops-checkbox-icon">✓</span>}
+            <div className={`stops-checkbox ${isStopSelected("2") ? "checked" : ""}`}>
+              {isStopSelected("2") && <span className="stops-checkbox-icon">✓</span>}
             </div>
             2 пересадки
           </button>
           <button
-            className={`stops-button ${isStopSelected("3 пересадки") ? "checked" : ""}`}
-            onClick={() => handleStopsClick("3 пересадки")}
+            className={`stops-button ${isStopSelected("3") ? "checked" : ""}`}
+            onClick={() => handleStopsClick("3")}
           >
-            <div className={`stops-checkbox ${isStopSelected("3 пересадки") ? "checked" : ""}`}>
-              {isStopSelected("3 пересадки") && <span className="stops-checkbox-icon">✓</span>}
+            <div className={`stops-checkbox ${isStopSelected("3") ? "checked" : ""}`}>
+              {isStopSelected("3") && <span className="stops-checkbox-icon">✓</span>}
             </div>
             3 пересадки
           </button>

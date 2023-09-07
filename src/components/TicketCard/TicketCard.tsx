@@ -41,12 +41,6 @@ const TicketCard = ({
   return (
     <section className="ticket-card">
       <div className="ticket-card-header">
-        {/* {carrier === "S7" ? (
-          <img src={S7} alt="s7" width={100} height={30} />
-        ) : (
-          <img src={TurkishAirlines} alt="turkish airlines" width={100} height={30} />
-        )} */}
-
         {carrier === "S7" && <img src={S7} alt="s7" width={100} height={30} />}
         {carrier === "TK" && (
           <img src={TurkishAirlines} alt="turkish airlines" width={100} height={30} />
