@@ -10,6 +10,16 @@ const App = () => {
   const [selectedCurrency, setSelectedCurrency] = useState<string>("RUB");
   const [selectedStops, setSelectedStops] = useState<string[]>([]);
   const [ticketsToShow, setTicketsToShow] = useState<Ticket[]>(tickets.tickets);
+  const currencyRates: { [key: string]: number } = {
+    RUB: 1,
+    USD: 0.013,
+    EUR: 0.011,
+  };
+  const currencySymbols: { [key: string]: string } = {
+    RUB: "₽",
+    USD: "$",
+    EUR: "€",
+  };
 
   const handleStopsChange = (stop: string) => {
     if (selectedStops.includes(stop)) {
@@ -35,8 +45,6 @@ const App = () => {
     }
   }, [selectedStops]);
 
-  useEffect(() => {}, [selectedCurrency]);
-
   return (
     <section>
       <section className="img-container">
@@ -48,22 +56,28 @@ const App = () => {
           handleCurrencyChange={handleCurrencyChange}
         />
         <section className="tickets">
-          {ticketsToShow.map((ticket, index) => (
-            <TicketCard
-              key={index}
-              origin={ticket.origin}
-              origin_name={ticket.origin_name}
-              destination={ticket.destination}
-              destination_name={ticket.destination_name}
-              departure_date={ticket.departure_date}
-              departure_time={ticket.departure_time}
-              arrival_date={ticket.arrival_date}
-              arrival_time={ticket.arrival_time}
-              carrier={ticket.carrier}
-              stops={ticket.stops}
-              price={ticket.price}
-            />
-          ))}
+          {ticketsToShow.map((ticket, index) => {
+            const priceInSelectedCurrency = ticket.price * currencyRates[selectedCurrency];
+            const currencySymbol = currencySymbols[selectedCurrency];
+
+            return (
+              <TicketCard
+                key={index}
+                origin={ticket.origin}
+                origin_name={ticket.origin_name}
+                destination={ticket.destination}
+                destination_name={ticket.destination_name}
+                departure_date={ticket.departure_date}
+                departure_time={ticket.departure_time}
+                arrival_date={ticket.arrival_date}
+                arrival_time={ticket.arrival_time}
+                carrier={ticket.carrier}
+                stops={ticket.stops}
+                price={priceInSelectedCurrency}
+                currencySymbol={currencySymbol}
+              />
+            );
+          })}
         </section>
       </main>
     </section>

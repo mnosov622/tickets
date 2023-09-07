@@ -20,6 +20,7 @@ interface TicketCardProps {
   carrier: string;
   stops: number;
   price: number;
+  currencySymbol: string;
 }
 
 const TicketCard = ({
@@ -34,6 +35,7 @@ const TicketCard = ({
   carrier,
   stops,
   price,
+  currencySymbol,
 }: TicketCardProps) => {
   const formattedDepartureDate = formatDate(departure_date);
   const formattedArrivalDate = formatDate(arrival_date);
@@ -51,7 +53,7 @@ const TicketCard = ({
         )}
         <button className="ticket-card-buy-button">
           Купить <br />
-          за {price} ₽
+          за {Math.round(price)} {currencySymbol}
         </button>
       </div>
       <div className="ticket-card-body">
