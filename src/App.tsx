@@ -4,20 +4,7 @@ import TicketCard from "./components/TicketCard/TicketCard";
 import "./App.css";
 import tickets from "./fake-data/tickets.json";
 import { useState, useEffect } from "react";
-
-interface Ticket {
-  origin: string;
-  origin_name: string;
-  destination: string;
-  destination_name: string;
-  departure_date: string;
-  departure_time: string;
-  arrival_date: string;
-  arrival_time: string;
-  carrier: string;
-  stops: number;
-  price: number;
-}
+import { Ticket } from "./interfaces/ticket";
 
 const App = () => {
   const [selectedCurrency, setSelectedCurrency] = useState<string>("RUB");
@@ -32,9 +19,15 @@ const App = () => {
     }
   };
 
+  const handleCurrencyChange = (currency: string) => {
+    setSelectedCurrency(currency);
+  };
+
   useEffect(() => {
     if (selectedStops.length === 0) {
       setTicketsToShow(tickets.tickets);
+    } else if (selectedStops.includes("All")) {
+      setTicketsToShow((prev) => tickets.tickets.filter((ticket) => ticket.stops >= 0));
     } else {
       setTicketsToShow((prev) =>
         tickets.tickets.filter((ticket) => selectedStops.includes(String(ticket.stops)))
@@ -42,13 +35,18 @@ const App = () => {
     }
   }, [selectedStops]);
 
+  useEffect(() => {}, [selectedCurrency]);
+
   return (
     <section>
       <section className="img-container">
         <img src={Plane} alt="plane" width={50} height={50} />
       </section>
       <main className="main">
-        <Filters handleStopsChange={handleStopsChange} />
+        <Filters
+          handleStopsChange={handleStopsChange}
+          handleCurrencyChange={handleCurrencyChange}
+        />
         <section className="tickets">
           {ticketsToShow.map((ticket, index) => (
             <TicketCard

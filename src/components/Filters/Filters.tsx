@@ -3,14 +3,16 @@ import "./Filters.css";
 
 interface FiltersProps {
   handleStopsChange: (stop: string) => void;
+  handleCurrencyChange: (currency: string) => void;
 }
 
-const Filters = ({ handleStopsChange }: FiltersProps) => {
+const Filters = ({ handleStopsChange, handleCurrencyChange }: FiltersProps) => {
   const [selectedCurrency, setSelectedCurrency] = useState<string>("RUB");
   const [selectedStops, setSelectedStops] = useState<string[]>([]);
 
   const handleCurrencyClick = (currency: string) => {
     setSelectedCurrency(currency);
+    handleCurrencyChange(currency);
   };
 
   const handleStopsClick = (stop: string) => {
