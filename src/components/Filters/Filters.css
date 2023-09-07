@@ -1,0 +1,42 @@
+.filters {
+  width: 220px;
+  height: 150px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  padding: 10px;
+}
+
+.currency h3 {
+  margin: 0.5em 0;
+  color: gray;
+  font-weight: 500;
+  font-size: 1em;
+}
+
+.currency-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.currency-button {
+  background-color: transparent;
+  color: gray;
+  border: 1px solid gray;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  outline: none;
+}
+
+.currency-button.blue {
+  background-color: rgb(27, 150, 237);
+  color: white;
+  border: none;
+}
+
+.currency-button:hover {
+  background-color: lightblue;
+}
