@@ -4,12 +4,13 @@
   min-height: 150px;
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   margin: 10px;
   padding: 10px;
 }
 
-.currency h3 {
+.currency h3,
+.stops h3 {
   margin: 0.5em 0;
   color: rgb(66, 66, 66);
   font-weight: 500;
@@ -48,6 +49,10 @@
   cursor: pointer;
   border: none;
   background: transparent;
+}
+
+.stops-button:not(:last-child) {
+  margin-bottom: 8px;
 }
 
 .stops-checkbox {

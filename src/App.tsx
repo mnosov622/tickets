@@ -6,7 +6,7 @@ const App = () => {
   return (
     <section>
       <section className="img-container">
-        <img src={Plane} alt="plane" />
+        <img src={Plane} alt="plane" width={50} height={50} />
       </section>
       <main className="main">
         <Filters />
