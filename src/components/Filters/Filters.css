@@ -1,12 +1,14 @@
 .filters {
   width: 220px;
-  height: auto;
+  height: 280px;
   min-height: 150px;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   margin: 10px;
   padding: 10px;
+  position: sticky;
+  top: 10px;
 }
 
 .currency h3,
