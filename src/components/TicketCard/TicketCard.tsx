@@ -5,8 +5,7 @@ import Aeroflot from "../../assets/aeroflot.png";
 import BritishAirways from "../../assets/british-airways.png";
 
 import TravelTime from "../../assets/travel-time.png";
-import { formatDate } from "../../utils/formatDate";
-import { getTransfersDeclension } from "../../utils/getTransfersDeclension";
+import { formatDate, getTransfersDeclension } from "../../utils/utils";
 
 interface TicketCardProps {
   origin: string;
